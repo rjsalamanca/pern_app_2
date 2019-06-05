@@ -10,6 +10,6 @@ const options = {
     user: 'rjs'
 }
 
-const db = php(options)
+const db = pgp(options)
 
 module.exports = db;

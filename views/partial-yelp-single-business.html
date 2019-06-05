@@ -1,0 +1,25 @@
+<header class='header'>
+    <h1 class='h1'>${business.rows[0].business_name}</h1>
+    <h2 class='h2'>${business.rows[0].business_address}</h2>
+    <h2 class='h2'>${business.rows[0].phone_num}</h2>
+
+</header>
+
+${
+    businessReviews.rows.map(ele=>
+        `
+        <div class='reviewContainer'>
+            <div class='stars'>Star: ${ele.stars}</div>
+            <div>${ele.review}</div>
+        </div>
+        `
+    ).join('')
+}
+
+<form action="/yelp/${business.rows[0].id}" method='POST'>
+    <textarea rows="4" cols="50" name="review">Enter text here...</textarea>
+    <br/>
+    Stars: <input type="text" name="stars">
+    <br/>
+    <button name='id' value=${business.rows[0].id} type="submit">submit</button>
+</form>

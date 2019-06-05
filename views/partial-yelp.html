@@ -1,1 +1,54 @@
-<section>hi</section>
+${
+    businesses.rows.map((bus,ind) => 
+        `
+        <div class='businessContainer'>
+            <img class='img busImage' src='https://www.placecage.com/210/210'/>
+            <section class='mainInfo'>
+                <h2><a href="/yelp/${bus.id}">${bus.business_name}</a></h2>
+                <p>${bus.business_type}</p>
+                <p class='stars'>
+                    <ul id='starsContainer${ind}'>
+                    </ul>
+                    <script>   
+                        const starList${ind} = document.getElementById('starsContainer${ind}');
+                        let star${ind} = Math.round(${
+                                    yelpReviews.rows.filter(
+                                        revBusID => revBusID.id == bus.id
+                                    ).map(ele=> ele.stars).reduce((tot,curr,ind,arr) => {
+                                        if(ind == (arr.length-1)){
+                                            return (tot + curr) / arr.length
+                                        } else {
+                                            return tot + curr
+                                        }
+                                    })
+                                });
+                        let reviews${ind} = ${yelpReviews.rows.filter(
+                                        revBusID => revBusID.id == bus.id
+                                    ).length}
+                        let emptyStars${ind} = 5 - star${ind};
+                        
+                        for(let i = 0; i<star${ind}; i++){
+                            starList${ind}.innerHTML += '<li><img src="../images/star.png"/></li>'
+                        }
+
+                        for(let i = 0; i<emptyStars${ind}; i++){
+                            starList${ind}.innerHTML += '<li><img src="../images/empty.png"/></li>'
+                        }
+                        
+                        starList${ind}.innerHTML += reviews${ind} + ' reviews';
+                    </script>
+                </p>
+                <p class='review'>
+                    ${
+                        yelpReviews.rows.filter(revBusID => revBusID.id == bus.id)[yelpReviews.rows.filter(revBusID => revBusID.id == bus.id).length - 1].review
+                    }
+                </p>
+            </section>
+            <section class='address'>
+                <p>${bus.phone_num}</p>
+                <p>${bus.business_address}</p>
+            </section>
+        </div>        
+        `
+    ).join('')
+}

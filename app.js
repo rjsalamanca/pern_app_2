@@ -1,13 +1,11 @@
 const express = require('express'),
-    path = require('path'),
     es6Renderer = require('express-es6-template-engine'),
+    path = require('path'),
     cookieParser = require('cookie-parser'),
     logger = require('morgan'),
-    mainRouter = require('./routes/index'),
-    usersRouter = require('./routes/users'),
-    app = express();
+    yelpRouter = require('./routes/yelp');
 
-
+app = express();
 app.engine('html', es6Renderer);
 app.set('views','./views');
 app.set('view engine', 'html');
@@ -18,7 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', mainRouter);
-app.use('/users', usersRouter);
+app.use('/yelp', yelpRouter);
 
 module.exports = app;
