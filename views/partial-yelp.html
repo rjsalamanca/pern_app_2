@@ -40,7 +40,7 @@ ${
                 </p>
                 <p class='review'>
                     ${
-                        yelpReviews.rows.filter(revBusID => revBusID.id == bus.id)[yelpReviews.rows.filter(revBusID => revBusID.id == bus.id).length - 1].review
+                        yelpReviews.rows.filter(revBusID => revBusID.id == ind+1).reverse()[0].review                        
                     }
                 </p>
             </section>

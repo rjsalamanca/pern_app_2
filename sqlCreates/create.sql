@@ -1,5 +1,5 @@
-DROP TABLE business;
 DROP TABLE reviews;
+DROP TABLE business;
 
 CREATE TABLE businesses(
     id SERIAL PRIMARY KEY,

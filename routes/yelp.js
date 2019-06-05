@@ -3,7 +3,7 @@ const express = require('express'),
   yelp = require('../models/yelpcopy');
 
 /* GET home page. */
-router.get('/?', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
   const businesses = await yelp.getAllBusinesses();
   const reviews = await yelp.getAllBusinessReviews();
 

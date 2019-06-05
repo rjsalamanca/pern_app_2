@@ -24,7 +24,7 @@ class yelp {
         const query = `
             SELECT B.id, B.business_name, R.review, R.stars
             FROM businesses AS B, reviews AS R 
-            WHERE R.business_id = B.id ORDER BY B.id;
+            WHERE R.business_id = B.id ORDER BY R.id;
         `;
 
         return await getQuery(query);
