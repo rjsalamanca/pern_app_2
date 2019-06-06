@@ -22,7 +22,9 @@ router.get('/', async function(req, res, next) {
 router.post('/:businessID', async function(req, res) {
 
   const { review, stars, id } = req.body;
+
   await yelp.addReview(review, stars, id);
+  
   const singleBusiness = await yelp.getOneBusiness(id)
   const singleBusinessReviews = await yelp.getOneBusinessReviews(id);
 
@@ -43,7 +45,6 @@ router.get('/:businessID', async function(req, res, next) {
   const singleBusiness = await yelp.getOneBusiness(businessID)
   const singleBusinessReviews = await yelp.getOneBusinessReviews(businessID);
 
-  console.log(businessID)
   res.render('template', { 
     locals:{
       title: 'Yelp Copy',

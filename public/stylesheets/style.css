@@ -54,3 +54,27 @@ h1{
   margin:10px 0;
   padding-bottom:10px;
 }
+
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+.starReview{
+  display:inline-block;
+  width:20px;
+  height:20px;
+  background:url(../images/empty.png);
+  background-size:cover;
+}
+
+[type=radio] + .starReview {
+  cursor: pointer;
+}
+
+[type=radio] + .starReview:hover{
+  cursor: pointer;
+}
