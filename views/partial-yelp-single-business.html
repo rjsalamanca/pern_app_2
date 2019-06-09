@@ -15,11 +15,9 @@ ${
         `
     ).join('')
 }
-<br/>
-<br/>
 
 <form action="/yelp/${business.rows[0].id}" method='POST'>
-    <textarea rows="4" cols="50" name="review" placeholder="Leave a review..."></textarea>
+    <textarea class='textarea' rows="4" cols="50" name="review" placeholder="Leave a review..."></textarea>
     <br/>
     Stars:
         <label>
@@ -52,8 +50,8 @@ ${
     Array.from(starRadio).forEach(ele => {
         ele.addEventListener('click', function(e){
             let stars = ele.value;
-            for(let i = 1; i <= starRadio.length; i++) document.getElementById('star'+i).style.backgroundImage = "url('../images/empty.png')";
-            for(let i = 1; i <= stars; i++) document.getElementById('star'+i).style.backgroundImage = "url('../images/star.png')";
+            for(let i = 1; i <= starRadio.length; i++) document.getElementById('star' + i).style.backgroundImage = "url('../images/empty.png')";
+            for(let i = 1; i <= stars; i++) document.getElementById('star' + i).style.backgroundImage = "url('../images/star.png')";
         });
     });
 </script>
